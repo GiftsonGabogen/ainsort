@@ -1,3 +1,5 @@
+const arg = require("../plugins/argumentFilter");
+
 let order = "asc";
 let by;
 
@@ -42,18 +44,9 @@ const mergesort = arr => {
 };
 
 const merge = (arr, orderArg = [], byArg) => {
-  if (orderArg[0] - orderArg[1] > 0) {
-    order = "desc";
-  } else {
-    order = "asc";
-  }
-
-  // if there is no third argument passed(reference to where to base the sorting) the sorting will based on the element itself
-  // but if the array passed is an object you need to pass the object's property to know where the sort basis is
-  // the passed argument should be string
-  if (byArg) {
-    by = byArg;
-  }
+  let params = arg(arr, orderArg, byArg);
+  order = params.order;
+  by = params.by;
   return mergesort(arr);
 };
 
