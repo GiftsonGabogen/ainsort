@@ -1,0 +1,11 @@
+{
+  "name": "ainsort",
+  "version": "1.0.0",
+  "description": "javascript sorting library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Giftson Irvin Renz C. Gabogen",
+  "license": "ISC"
+}
