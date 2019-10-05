@@ -10,7 +10,7 @@ function merging(left, right) {
   while (left.length !== 0 && right.length !== 0) {
     //find both of the first element of both array
     //check which is lesser and the lesser element will be shift(remove the first element of an array) out of it's array
-    // the shifted array will be added to the result array container on it's most right hand side
+    // the shifted array will be added o the result array container on it's most right hand side
     //so that the latest element will be on the right hand side because it is higher number than the previous pushed element
     if (
       by === undefined
