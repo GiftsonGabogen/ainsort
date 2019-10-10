@@ -1,6 +1,9 @@
 # AINSORT #
 
 
+```
+npm install ainsort
+```
 
 ## Start Sorting:
 ```javascript
@@ -39,3 +42,15 @@ output: [{num:1},{num:2},{num:3},{num:4},{num:5}]
 * the third argument should be a string
 * third argument is needed if the passed array is an object otherwise sorting won't work
 
+---
+## Available Sorting Algorithms
+* bubblesort (ainsort.bubble)
+* insertionsort (ainsort.insertion)
+* mergesort (ainsort.merge)
+* quicksort (ainsort.quick)
+* radixsort (ainsort.radix)
+* selectionsort (ainsort.selection)
+---
+
+>[Github](https://github.com/GiftsonGabogen/ainsort) | - - |
+>[npm](https://www.npmjs.com/package/ainsort)
