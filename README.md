@@ -32,7 +32,7 @@ output: [1,2,4,5,7,8]
 * if the [1,2] is passed it will be in ascending order and vice versa
 * if none is passed the default ordering is ascending
 
->With the Object Property Param (if and only if the passed array is an object)
+>With the Object Property Param (if and only if the passed array's element is an object)
 ```javascript
 let arr = [{num:2},{num:3},{num:1},{num:5},{num:4}]
 
@@ -40,7 +40,25 @@ ainsort.merge(arr,[1,2],"num")
 ```
 output: [{num:1},{num:2},{num:3},{num:4},{num:5}]
 * the third argument should be a string
-* third argument is needed if the passed array is an object otherwise sorting won't work
+* third argument is needed if the passed array's element is an object otherwise sorting won't work
+>more Example
+```javascript
+let arr = [
+  {student:{details:age:23}},
+  {student:{details:age:21}},
+  {student:{details:age:27}},
+  {student:{details:age:30}}
+  ]
+
+ainsort.merge(arr,[2,1],"num.details.age")
+```
+
+output : [
+  {student:{details:age:30}},
+  {student:{details:age:27}},
+  {student:{details:age:23}},
+  {student:{details:age:21}}
+  ]
 
 ---
 ## Available Sorting Algorithms
