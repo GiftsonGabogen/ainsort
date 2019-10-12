@@ -1,4 +1,5 @@
 const arg = require("../plugins/argumentFilter");
+const byArgFilter = require("../plugins/byArgFilter");
 
 let order = "asc";
 let by;
@@ -10,15 +11,7 @@ const selectionsort = arr => {
   }
   let smallest = 0;
   for (let i = 0; i < arr.length; i++) {
-    if (
-      by === undefined
-        ? order === "desc"
-          ? arr[smallest] < arr[i]
-          : arr[smallest] > arr[i]
-        : order === "desc"
-        ? arr[smallest][by] < arr[i][by]
-        : arr[smallest][by] > arr[i][by]
-    ) {
+    if (byArgFilter(by, order, arr[smallest], arr[i])) {
       smallest = i;
     }
   }

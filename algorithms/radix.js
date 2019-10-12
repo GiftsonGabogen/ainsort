@@ -1,3 +1,13 @@
+const objectMiner = (obj, pass) => {
+  let ans;
+  let passed = pass.split(".");
+  ans = obj[passed[0]];
+  for (let i = 1; i < passed.length; i++) {
+    ans = ans[passed[i]];
+  }
+  return ans;
+};
+
 const arg = require("../plugins/argumentFilter");
 let order = "asc";
 let by;
@@ -9,7 +19,7 @@ const radixsort = arr => {
     if (by === undefined) {
       num = parseInt(arr[i]);
     } else {
-      num = parseInt(arr[i][by]);
+      num = parseInt(objectMiner(arr[i], by));
     }
     if (num.toString().length > scanHighest) {
       scanHighest = num.toString().length;
@@ -32,7 +42,7 @@ const radixsort = arr => {
       if (by === undefined) {
         num = parseInt(arr[y]);
       } else {
-        num = parseInt(arr[y][by]);
+        num = parseInt(objectMiner(arr[y], by));
       }
       num = num.toString();
       let numPos = num.length - 1 - x;

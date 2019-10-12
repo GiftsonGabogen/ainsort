@@ -1,4 +1,5 @@
 const arg = require("../plugins/argumentFilter");
+const byArgFilter = require("../plugins/byArgFilter");
 
 let order = "asc";
 let by;
@@ -7,18 +8,8 @@ const bubblesort = arr => {
   let highest = arr.length - 1;
   let sethigh;
   for (let j = arr.length - 1; j > 0; j--) {
-    //compare indexes two by two
-    //swap the two indexes if the right one is lower
     for (let i = 0; i < highest; i++) {
-      if (
-        by === undefined
-          ? order === "asc"
-            ? arr[i] > arr[i + 1]
-            : arr[i] < arr[i + 1]
-          : order === "asc"
-          ? arr[i][by] > arr[i + 1][by]
-          : arr[i][by] < arr[i + 1][by]
-      ) {
+      if (byArgFilter(by, order, arr[i], arr[i + 1])) {
         let temp = arr[i];
         arr[i] = arr[i + 1];
         arr[i + 1] = temp;
@@ -35,7 +26,7 @@ const bubblesort = arr => {
   return arr;
 };
 
-const bubble = (arr, orderArg, byArg) => {
+const bubble = (arr, orderArg = [], byArg) => {
   let params = arg(arr, orderArg, byArg);
   order = params.order;
   by = params.by;

@@ -1,4 +1,5 @@
 const arg = require("../plugins/argumentFilter");
+const byArgFilter = require("../plugins/byArgFilter");
 
 let order = "asc";
 let by;
@@ -12,18 +13,10 @@ function merging(left, right) {
     //check which is lesser and the lesser element will be shift(remove the first element of an array) out of it's array
     // the shifted array will be added o the result array container on it's most right hand side
     //so that the latest element will be on the right hand side because it is higher number than the previous pushed element
-    if (
-      by === undefined
-        ? order === "desc"
-          ? left[0] > right[0]
-          : left[0] < right[0]
-        : order === "desc"
-        ? left[0][by] > right[0][by]
-        : left[0][by] < right[0][by]
-    ) {
-      result.push(left.shift());
-    } else {
+    if (byArgFilter(by, order, left[0], right[0])) {
       result.push(right.shift());
+    } else {
+      result.push(left.shift());
     }
   }
   //if one of the array is empty, the array that still have an element will pushed it's remaining element into the result array container

@@ -1,4 +1,5 @@
 const arg = require("../plugins/argumentFilter");
+const byArgFilter = require("../plugins/byArgFilter");
 
 let order = "asc";
 let by;
@@ -21,15 +22,7 @@ const partition = (arr, start, end) => {
   for (let i = start; i < end; i++) {
     //if the element i is less than the pivot
     //swap the index to that i element
-    if (
-      by === undefined
-        ? order === "desc"
-          ? arr[i] > pivot
-          : arr[i] < pivot
-        : order === "desc"
-        ? arr[i][by] > pivot[by]
-        : arr[i][by] < pivot[by]
-    ) {
+    if (byArgFilter(by, order, pivot, arr[i])) {
       let temp = arr[pindex];
       arr[pindex] = arr[i];
       arr[i] = temp;

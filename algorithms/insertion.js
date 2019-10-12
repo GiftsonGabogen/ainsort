@@ -1,4 +1,5 @@
 const arg = require("../plugins/argumentFilter");
+const byArgFilter = require("../plugins/byArgFilter");
 
 let order = "asc";
 let by;
@@ -7,19 +8,11 @@ const insertionsort = (arr, num) => {
   let hole = num;
   let value = arr[num];
   for (let i = num; i > 0; i--) {
-    if (
-      by === undefined
-        ? order === "desc"
-          ? value > arr[i - 1]
-          : value < arr[i - 1]
-        : order === "desc"
-        ? value[by] > arr[i - 1][by]
-        : value[by] < arr[i - 1][by]
-    ) {
+    if (byArgFilter(by, order, value, arr[i - 1])) {
+      break;
+    } else {
       arr[hole] = arr[i - 1];
       hole = i - 1;
-    } else {
-      break;
     }
   }
   arr[hole] = value;
