@@ -46,14 +46,3 @@ const quick = (arr, orderArg = [], byArg) => {
 };
 
 module.exports = quick;
-
-const testArray = [
-  { students: [{ details: { name: "ebben", age: 20 } }] },
-  { students: [{ details: { name: "wifeain", age: 21 } }] },
-  { students: [{ details: { name: "grey", age: 1 } }] }
-];
-
-let out = quick(testArray, [2, 1], "students[0].details.name");
-for (let i = 0; i < out.length; i++) {
-  console.log(out[i].students[0]);
-}
